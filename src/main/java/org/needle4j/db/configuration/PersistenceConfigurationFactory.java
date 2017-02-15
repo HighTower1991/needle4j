@@ -77,7 +77,7 @@ public final class PersistenceConfigurationFactory implements PersistenceConfigu
         if (configuration.getPersistenceUnit() != null) {
             return new PersistenceUnitConfiguration(configuration.getPersistenceUnit());
         } else if (configuration.getCfgClazzes() != null) {
-            return new EJB3Configuration(configuration.getCfgClazzes());
+            return new Configuration( configuration.getCfgClazzes());
         }
 
         return null;
