@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.needle4j.NeedleContext;
+import org.needle4j.NeedleTestcase;
 
 import org.needle4j.common.MapEntry;
 import org.needle4j.configuration.NeedleConfiguration;
@@ -226,12 +228,13 @@ public final class InjectionConfiguration {
         return Collections.unmodifiableSet(injectionAnnotationClasses);
     }
 
-    public Entry<Object, Object> handleInjectionProvider(final Collection<InjectionProvider<?>> injectionProviders,
+    public Entry<Object, Object> handleInjectionProvider(final NeedleContext context, final Collection<InjectionProvider<?>> injectionProviders,
                                                          final InjectionTargetInformation injectionTargetInformation) {
 
         for (final InjectionProvider<?> provider : injectionProviders) {
 
             if (provider.verify(injectionTargetInformation)) {
+                provider.passContainer(context);
                 final Object object = provider.getInjectedObject(injectionTargetInformation.getType());
                 final Object key = provider.getKey(injectionTargetInformation);
 

@@ -1,5 +1,6 @@
 package org.needle4j.injection;
 
+import org.needle4j.NeedleContext;
 import org.needle4j.NeedleTestcase;
 
 /**
@@ -52,4 +53,7 @@ public interface InjectionProvider<T> extends InjectionVerifier {
      * @see NeedleTestcase#getInjectedObject(Object)
      */
     Object getKey(InjectionTargetInformation injectionTargetInformation);
+    
+    default void passContainer(NeedleContext needle){
+    }
 }

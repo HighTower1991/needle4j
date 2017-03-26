@@ -343,7 +343,7 @@ public abstract class NeedleTestcase {
 
     private Entry<Object, Object> inject(final InjectionTargetInformation injectionTargetInformation) {
         for (final Collection<InjectionProvider<?>> collection : configuration.getInjectionProvider()) {
-            final Entry<Object, Object> injection = configuration.handleInjectionProvider(collection,
+            final Entry<Object, Object> injection = configuration.handleInjectionProvider(context, collection,
                     injectionTargetInformation);
             if (injection != null) {
 

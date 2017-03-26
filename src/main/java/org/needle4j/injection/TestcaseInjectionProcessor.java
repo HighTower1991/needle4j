@@ -45,7 +45,7 @@ public class TestcaseInjectionProcessor extends AbstractNeedleProcessor {
                 field);
 
         for (Collection<InjectionProvider<?>> injectionProvider : injectionProviderList) {
-            Entry<Object, Object> injection = configuration.handleInjectionProvider(injectionProvider,
+                        Entry<Object, Object> injection = configuration.handleInjectionProvider(context, injectionProvider,
                     injectionTargetInformation);
 
             if (injection != null) {
